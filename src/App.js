@@ -12,6 +12,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import { BsCart2 } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
+import axios from 'axios';
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
     <Router>
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="/home">Home</Navbar.Brand>
+          <Navbar.Brand href="/">Home</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" >
             <Nav className="d-flex w-100 justify-content-between">
