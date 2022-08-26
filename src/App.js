@@ -13,6 +13,8 @@ import Button from 'react-bootstrap/Button';
 import { BsCart2 } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import axios from 'axios';
+import Profile from './pages/Profile';
+import ProductListing from './pages/ProductListing';
 
 
 function App() {
@@ -35,17 +37,16 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-      </Routes>
-      <Routes>
+
+      
         <Route path="/cart" element={<Cart />} />
-      </Routes>
-      <Routes>
+     
         <Route path="/login" element={<Login />} />
-      </Routes>
-      <Routes>
-        <Route path="/shop" element={<Shop />} />
-      </Routes>
-      <Routes>
+     
+        <Route path="/profile" element={<Profile />} />
+     
+        <Route path="/shop" element={<ProductListing />} />
+    
         <Route path="/register" element={<Register />} />
       </Routes>
 

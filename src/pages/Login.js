@@ -30,6 +30,7 @@ export default function Login() {
             if (response.status === 200) {
                 localStorage.setItem("accessToken", response.data.accessToken)
                 localStorage.setItem('refreshToken', response.data.refreshToken)
+                localStorage.setItem('id', response.data.user_id)
                 navigate('/profile')
             } else if (response.status === 204) {
                 setLoginFail(true)
