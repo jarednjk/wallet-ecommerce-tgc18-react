@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -16,10 +16,10 @@ import axios from 'axios';
 import Profile from './pages/Profile';
 import ProductListing from './pages/ProductListing';
 
-
-function App() {
+function AddContent() {
+  let location = useLocation();
   return (
-    <Router>
+    <div className={location.pathname === "/" ? "home-page": ""}>
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="/">Home</Navbar.Brand>
@@ -38,7 +38,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-      
         <Route path="/cart" element={<Cart />} />
      
         <Route path="/login" element={<Login />} />
@@ -49,7 +48,17 @@ function App() {
     
         <Route path="/register" element={<Register />} />
       </Routes>
+      </div>
+  )
+}
 
+function App() {
+
+  
+
+  return (
+    <Router>
+      <AddContent/>
     </Router>
   );
 }

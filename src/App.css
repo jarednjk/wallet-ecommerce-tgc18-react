@@ -1,15 +1,21 @@
 
 
 .bg-height {
-  height: 100vh;
+  height: 100%;
 }
 
 #bg-image {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   background-image: url("/public/wallet.jpg");
   background-size: cover;
   filter: brightness(60%);
+}
+
+.home-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 #cta {
