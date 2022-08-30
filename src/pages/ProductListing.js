@@ -12,8 +12,6 @@ export default function ProductListing() {
     const [brands, setBrands] = useState([]);
     const [features, setFeatures] = useState([]);
     const [products, setProducts] = useState([]);
-    const [oneProduct, setOneProduct] = useState({ products: "", variants: [] });
-    const [searchInputs, setSearchInputs] = useState(true);
 
     const [nameSearch, setNameSearch] = useState("");
     const [materialSearch, setMaterialSearch] = useState("");
@@ -144,6 +142,21 @@ export default function ProductListing() {
         setProducts(response.data)
     }
 
+    const resetSearch = async () => {
+        setNameSearch("")
+        setMaterialSearch("")
+        setBrandSearch("")
+        setCategorySearch("")
+        setFeatureSearch([])
+        setMinCostSearch("")
+        setMaxCostSearch("")
+        setMinCardSlotSearch("")
+        setMaxCardSlotSearch("")
+
+        const response = await axios.get(BASE_URL + "/api/products")
+        setProducts(response.data)
+    }
+
     return (
         <React.Fragment>
             <Container>
@@ -239,7 +252,7 @@ export default function ProductListing() {
                                     </div>
                                     <div className="text-end">
                                         <Button onClick={search}>Search</Button>
-                                        <Button className="ms-2">Reset</Button>
+                                        <Button onClick={resetSearch} className="ms-2">Reset</Button>
                                     </div>
                                 </Accordion.Body>
                             </Accordion.Item>
