@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, Accordion, Container, Row, Col, Card, Button } from "react-bootstrap";
+import { FiSearch, FiFilter } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
@@ -80,51 +81,6 @@ export default function ProductListing() {
         setCategorySearch(e.target.value)
     }
 
-    // const updateMaterial = (e) => {
-    //     if (materialSearch.includes(e.target.value)) {
-    //         let index = materialSearch.indexOf(e.target.value)
-    //         // clone the array
-    //         let cloned = materialSearch.slice()
-    //         // modify the array
-    //         cloned.splice(index, 1)
-    //         setMaterialSearch(cloned)
-    //     } else {
-    //         let cloned = materialSearch.slice()
-    //         cloned.push(e.target.value)
-    //         setMaterialSearch(cloned)
-    //     }
-    // }
-
-    // const updateBrand = (e) => {
-    //     if (brandSearch.includes(e.target.value)) {
-    //         let index = brandSearch.indexOf(e.target.value)
-    //         // clone the array
-    //         let cloned = brandSearch.slice()
-    //         // modify the array
-    //         cloned.splice(index, 1)
-    //         setBrandSearch(cloned)
-    //     } else {
-    //         let cloned = brandSearch.slice()
-    //         cloned.push(e.target.value)
-    //         setBrandSearch(cloned)
-    //     }
-    // }
-
-    // const updateCategory = (e) => {
-    //     if (categorySearch.includes(e.target.value)) {
-    //         let index = categorySearch.indexOf(e.target.value)
-    //         // clone the array
-    //         let cloned = categorySearch.slice()
-    //         // modify the array
-    //         cloned.splice(index, 1)
-    //         setCategorySearch(cloned)
-    //     } else {
-    //         let cloned = categorySearch.slice()
-    //         cloned.push(e.target.value)
-    //         setCategorySearch(cloned)
-    //     }
-    // }
-
     const updateFeature = (e) => {
         if (featureSearch.includes(e.target.value)) {
             let index = featureSearch.indexOf(e.target.value)
@@ -147,23 +103,23 @@ export default function ProductListing() {
             getSearch.name = nameSearch
         }
 
-        if(minCostSearch) {
+        if (minCostSearch) {
             getSearch.min_cost = minCostSearch
         }
 
-        if(maxCostSearch) {
+        if (maxCostSearch) {
             getSearch.max_cost = maxCostSearch
         }
 
-        if(minCostSearch) {
+        if (minCostSearch) {
             getSearch.min_cost = minCostSearch
         }
 
-        if(minCardSlotSearch) {
+        if (minCardSlotSearch) {
             getSearch.min_card_slot = minCardSlotSearch
         }
 
-        if(maxCardSlotSearch) {
+        if (maxCardSlotSearch) {
             getSearch.max_card_slot = maxCardSlotSearch
         }
 
@@ -198,111 +154,95 @@ export default function ProductListing() {
                     <p>Crafted from premium, durable materials, our wallets feel great in your hand, and age beautifully as the years go by.</p>
                 </div>
 
-                <Row>
+                <Row className="g-4 g-lg-5">
                     {/* Search bar */}
                     <Col lg={3}>
-                        <Accordion defaultActiveKey="0" className="mt-3" alwaysOpen>
-                            {/* <Accordion.Item eventKey="0">
-                                <Accordion.Header>Materials</Accordion.Header>
+                        <div className="input-box d-flex flex-row align-items-center ps-3 rounded mb-3">
+                            <FiSearch className="ms-1" />
+                            <Form.Control type="text" name="nameSearch" value={nameSearch} onChange={(e) => setNameSearch(e.target.value)} placeholder="Search Wallet" className="py-2 border-0 bg-transparent rounded-0" />
+                        </div>
+                        <Accordion>
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header><FiFilter className="me-1" />Filter</Accordion.Header>
                                 <Accordion.Body>
-                                    {materials.map((m) =>
-                                        <Form.Check key={m[0]}
-                                            checked={materialSearch.includes(m[0].toString())}
-                                            label={m[1]}
-                                            value={m[0]}
-                                            onChange={updateMaterial} />
-                                    )}
 
+                                    <div className="d-flex justify-content-between d-lg-block">
+                                        <Form.Group className="mb-2 me-3 me-lg-0 search-box">
+                                            <Form.Label>Min Cost</Form.Label>
+                                            <Form.Control type="text" name="minCostSearch" value={minCostSearch} onChange={(e) => setMinCostSearch(e.target.value)} />
+                                        </Form.Group>
+
+                                        <Form.Group className="mb-2 search-box">
+                                            <Form.Label>Max Cost</Form.Label>
+                                            <Form.Control type="text" name="maxCostSearch" value={maxCostSearch} onChange={(e) => setMaxCostSearch(e.target.value)} />
+                                        </Form.Group>
+                                    </div>
+
+                                    <div className="d-flex justify-content-between d-lg-block">
+                                        <Form.Group className="mb-2 me-3 me-lg-0 search-box">
+                                            <Form.Label>Min Card Slots</Form.Label>
+                                            <Form.Control type="text" name="minCardSlotSearch" value={minCardSlotSearch} onChange={(e) => setMinCardSlotSearch(e.target.value)} />
+                                        </Form.Group>
+
+                                        <Form.Group className="mb-2 search-box">
+                                            <Form.Label>Max Card Slots</Form.Label>
+                                            <Form.Control type="text" name="maxCardSlotSearch" value={maxCardSlotSearch} onChange={(e) => setMaxCardSlotSearch(e.target.value)} />
+                                        </Form.Group>
+                                    </div>
+
+                                    <div className="d-flex justify-content-between d-lg-block">
+                                        <Form.Group className="mb-2 me-3 me-lg-0 search-box">
+                                            <Form.Label>Material</Form.Label>
+                                            <Form.Select value={materialSearch} onChange={updateMaterial}>
+                                                {materials.map((m) =>
+                                                    <option key={m[0]} name="materialSearch" value={m[0]}>
+                                                        {m[1]}
+                                                    </option>
+                                                )}
+                                            </Form.Select>
+                                        </Form.Group>
+
+                                        <Form.Group className="mb-2 search-box">
+                                            <Form.Label>Brand</Form.Label>
+                                            <Form.Select value={brandSearch} onChange={updateBrand}>
+                                                {brands.map((b) =>
+                                                    <option key={b[0]} name="brandSearch" value={b[0]}>
+                                                        {b[1]}
+                                                    </option>
+                                                )}
+                                            </Form.Select>
+                                        </Form.Group>
+                                    </div>
+
+                                    <div className="d-flex justify-content-between d-lg-block">
+                                        <Form.Group className="mb-2 me-3 me-lg-0 search-box">
+                                            <Form.Label>Category</Form.Label>
+                                            <Form.Select value={categorySearch} onChange={updateCategory}>
+                                                {categories.map((c) =>
+                                                    <option key={c[0]} name="categorySearch" value={c[0]}>
+                                                        {c[1]}
+                                                    </option>
+                                                )}
+                                            </Form.Select>
+                                        </Form.Group>
+
+                                        <Form.Group className="mb-3 search-box">
+                                            <Form.Label>Features</Form.Label>
+                                            {features.map((f) =>
+                                                <Form.Check key={f[0]}
+                                                    checked={featureSearch.includes(f[0].toString())}
+                                                    label={f[1]}
+                                                    value={f[0]}
+                                                    onChange={updateFeature} />
+                                            )}
+                                        </Form.Group>
+                                    </div>
+                                    <div className="text-end">
+                                        <Button onClick={search}>Search</Button>
+                                        <Button className="ms-2">Reset</Button>
+                                    </div>
                                 </Accordion.Body>
                             </Accordion.Item>
-                            <Accordion.Item eventKey="1">
-                                <Accordion.Header>Brands</Accordion.Header>
-                                <Accordion.Body>
-                                    {brands.map((b) =>
-                                        <Form.Check key={b[0]}
-                                            checked={brandSearch.includes(b[0].toString())}
-                                            label={b[1]}
-                                            value={b[0]}
-                                            onChange={updateBrand} />
-                                    )}
-
-                                </Accordion.Body>
-                            </Accordion.Item> */}
-                            <Form.Group>
-                                <Form.Label>Search Wallet Name</Form.Label>
-                                <Form.Control type="text" name="nameSearch" value={nameSearch} onChange={(e) => setNameSearch(e.target.value)} />
-                            </Form.Group>
-
-                            <Form.Group>
-                                <Form.Label>Min Cost</Form.Label>
-                                <Form.Control type="text" name="minCostSearch" value={minCostSearch} onChange={(e) => setMinCostSearch(e.target.value)} />
-                            </Form.Group>
-
-                            <Form.Group>
-                                <Form.Label>Max Cost</Form.Label>
-                                <Form.Control type="text" name="maxCostSearch" value={maxCostSearch} onChange={(e) => setMaxCostSearch(e.target.value)} />
-                            </Form.Group>
-
-                            <Form.Group>
-                                <Form.Label>Min Card Slots</Form.Label>
-                                <Form.Control type="text" name="minCardSlotSearch" value={minCardSlotSearch} onChange={(e) => setMinCardSlotSearch(e.target.value)} />
-                            </Form.Group>
-
-                            <Form.Group>
-                                <Form.Label>Max Card Slots</Form.Label>
-                                <Form.Control type="text" name="maxCardSlotSearch" value={maxCardSlotSearch} onChange={(e) => setMaxCardSlotSearch(e.target.value)} />
-                            </Form.Group>
-
-                            <Form.Group>
-                                <Form.Label>Materials</Form.Label>
-                                <Form.Select value={materialSearch} onChange={updateMaterial}>
-                                    {materials.map((m) =>
-                                        <option key={m[0]} name="materialSearch" value={m[0]}>
-                                            {m[1]}
-                                        </option>
-                                    )}
-                                </Form.Select>
-                            </Form.Group>
-
-                            <Form.Group>
-                                <Form.Label>Brands</Form.Label>
-                                <Form.Select value={brandSearch} onChange={updateBrand}>
-                                    {brands.map((b) =>
-                                        <option key={b[0]} name="brandSearch" value={b[0]}>
-                                            {b[1]}
-                                        </option>
-                                    )}
-                                </Form.Select>
-                            </Form.Group>
-
-                            <Form.Group>
-                                <Form.Label>Categories</Form.Label>
-                                <Form.Select value={categorySearch} onChange={updateCategory}>
-                                    {categories.map((c) =>
-                                        <option key={c[0]} name="categorySearch" value={c[0]}>
-                                            {c[1]}
-                                        </option>
-                                    )}
-                                </Form.Select>
-                            </Form.Group>
-
-                            <Form.Group>
-                                <Form.Label>Features</Form.Label>
-                                {features.map((f) =>
-                                    <Form.Check key={f[0]}
-                                        checked={featureSearch.includes(f[0].toString())}
-                                        label={f[1]}
-                                        value={f[0]}
-                                        onChange={updateFeature} />
-                                )}
-                            </Form.Group>
-
-                            <div>
-                                <Button onClick={search}>Search</Button>
-                                <Button>Reset</Button>
-                            </div>
-
-
                         </Accordion>
                     </Col>
 

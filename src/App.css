@@ -38,3 +38,23 @@
   height: auto;
   background-color: black;
 }
+
+.input-box {
+  border: 1px solid lightgrey !important;
+}
+
+.search-box {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .search-box {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .search-box {
+    width: 100%;
+  }
+}
