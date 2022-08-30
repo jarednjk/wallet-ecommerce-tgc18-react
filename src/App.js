@@ -15,50 +15,55 @@ import { CgProfile } from "react-icons/cg";
 import axios from 'axios';
 import Profile from './pages/Profile';
 import ProductListing from './pages/ProductListing';
+import UserProvider from './context/UserContext';
 
 function AddContent() {
   let location = useLocation();
   return (
-    <div className={location.pathname === "/" ? "home-page": ""}>
-      <Navbar bg="light" expand="lg">
-        <Container>
-          <Navbar.Brand href="/">Home</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav" >
-            <Nav className="d-flex w-100 justify-content-between">
-                  <Nav.Link href="/shop">Shop</Nav.Link>
-                  <Nav.Link className="ms-auto" href="/login"><big><CgProfile /></big></Nav.Link>
-                  <Nav.Link href="/cart"><big><BsCart2 /></big></Nav.Link>
+    <div className={location.pathname === "/" ? "home-page" : ""}>
+      <UserProvider>
+        <Navbar bg="light" expand="lg">
+          <Container>
+            <Navbar.Brand href="/">Home</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav" >
+              <Nav className="d-flex w-100 justify-content-between">
+                <Nav.Link href="/shop">Shop</Nav.Link>
+                <Nav.Link className="ms-auto" href="/login"><big><CgProfile /></big></Nav.Link>
+                <Nav.Link href="/cart"><big><BsCart2 /></big></Nav.Link>
 
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        <Route path="/cart" element={<Cart />} />
-     
-        <Route path="/login" element={<Login />} />
-     
-        <Route path="/profile" element={<Profile />} />
-     
-        <Route path="/shop" element={<ProductListing />} />
-    
-        <Route path="/register" element={<Register />} />
-      </Routes>
-      </div>
+
+          <Route path="/cart" element={<Cart />} />
+
+          <Route path="/login" element={<Login />} />
+
+          <Route path="/profile" element={<Profile />} />
+
+          <Route path="/shop" element={<ProductListing />} />
+
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </UserProvider>
+
+    </div>
   )
 }
 
 function App() {
 
-  
+
 
   return (
     <Router>
-      <AddContent/>
+      <AddContent />
     </Router>
   );
 }
