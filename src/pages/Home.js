@@ -9,7 +9,7 @@ export default function Home() {
                 <div id="cta">
                     <big><p className="mb-3 px-2">Built with trust and confidence.</p></big>
                     <h1 className="display-4 mb-4">MEN WALLET</h1>
-                    <Button variant="warning" href="/shop">SHOP NOW</Button>
+                    <Button variant="warning" href="/wallets">SHOP NOW</Button>
                 </div>
             </div>
         </React.Fragment>

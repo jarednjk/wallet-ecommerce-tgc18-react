@@ -47,6 +47,10 @@
   width: 100%;
 }
 
+.breadcrumb-item:hover {
+  color: black !important;
+}
+
 @media screen and (min-width: 768px) {
   .search-box {
     width: 50%;
