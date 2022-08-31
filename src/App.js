@@ -16,6 +16,7 @@ import axios from 'axios';
 import Profile from './pages/Profile';
 import ProductListing from './pages/ProductListing';
 import UserProvider from './context/UserContext';
+import ProductDetail from './pages/ProductDetail';
 
 function AddContent() {
   let location = useLocation();
@@ -28,7 +29,7 @@ function AddContent() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" >
               <Nav className="d-flex w-100 justify-content-between">
-                <Nav.Link href="/shop">Shop</Nav.Link>
+                <Nav.Link href="/wallets">Shop</Nav.Link>
                 <Nav.Link className="ms-auto" href="/login"><big><CgProfile /></big></Nav.Link>
                 <Nav.Link href="/cart"><big><BsCart2 /></big></Nav.Link>
 
@@ -39,17 +40,13 @@ function AddContent() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-
-
+          <Route path="/wallets/:product_id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
-
           <Route path="/login" element={<Login />} />
-
           <Route path="/profile" element={<Profile />} />
-
-          <Route path="/shop" element={<ProductListing />} />
-
+          <Route path="/wallets" element={<ProductListing />} />
           <Route path="/register" element={<Register />} />
+
         </Routes>
       </UserProvider>
 

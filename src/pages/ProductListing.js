@@ -265,7 +265,7 @@ export default function ProductListing() {
                             {products.map(p => <React.Fragment key={p.id}>
                                 <Col xs={12} md={6} lg={6} xl={4}>
                                     <Card className="h-100 rounded-3 shadow">
-                                        <Link to={"/shop/" + p.id} className="text-reset text-decoration-none" >
+                                        <Link to={"/wallets/" + p.id} className="text-reset text-decoration-none" >
                                             <Card.Img variant="top" src={p?.variants?.[0]?.image_url} />
                                             <div id="card-cta">
                                                 <p className="text-center p-1" style={{ color: "white" }}>QUICK VIEW</p>
