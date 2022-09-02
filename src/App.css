@@ -51,6 +51,22 @@
   color: black !important;
 }
 
+.checked-circle {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  outline-offset: 2px;
+  outline: 2px solid grey;
+}
+
+.unchecked-circle {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 @media screen and (min-width: 768px) {
   .search-box {
     width: 50%;

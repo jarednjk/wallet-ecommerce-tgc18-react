@@ -28,14 +28,16 @@ export default function LoginProvider({children}) {
         } else {
             const response = await axios.post(BASE_URL + "/api/users/login/", {
                 "email": email,
-                "password": password
+                "password": password,
             })
+
+            console.log(response.data)
 
             if (response.status === 200) {
                 console.log(response)
                 localStorage.setItem("accessToken", response.data.accessToken)
                 localStorage.setItem('refreshToken', response.data.refreshToken)
-                localStorage.setItem('id', response.data.user_id)
+                localStorage.setItem('id', response.data.id)
                 
                 navigate('/profile')
             } else if (response.status === 204) {

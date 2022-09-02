@@ -65,7 +65,7 @@ export default function Login() {
                         {value.loginFail === true ? <Form.Text style={{ color: 'red' }}>Invalid email or password. Please try again.</Form.Text> : null}
 
                         <div className="d-grid mt-3">
-                            <Button onClick={ () => {value.login(email, password)}}>SIGN IN</Button>
+                            <Button onClick={ async () => { await value.login(email, password)}}>SIGN IN</Button>
                         </div>
                         <p className="text-center pt-5">Don't have an account? <Link to="/register">Register now</Link></p>
                     </Form>
