@@ -67,9 +67,33 @@
   display: inline-block;
 }
 
+.qty-box {
+  border: 1px solid black;
+}
+
+.item-body {
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.cart-img {
+  height: 100px;
+  width: 120px;
+  object-fit: cover;
+}
+
 @media screen and (min-width: 768px) {
   .search-box {
     width: 50%;
+  }
+
+  .cart-img {
+    height: 135px;
+    width: 180px;
+    object-fit: cover;
   }
 }
 
