@@ -27,6 +27,7 @@ export default function Cart() {
         }
     }, [])
 
+    const user_id = localStorage.getItem("id");
     const fetch = async () => {
 
         const response = await axios.get(BASE_URL + "/api/cart", {
@@ -37,8 +38,8 @@ export default function Cart() {
         const quantity = {}
         for (let r of response.data) {
             quantity[r.variant_id] = r.quantity
-          }
-          setQuantity(quantity)
+        }
+        setQuantity(quantity)
 
         // let orderSubTotal = 0;
         // for (let i of response.data) {
@@ -75,11 +76,11 @@ export default function Cart() {
     }
 
     const updateCartItem = async (variantId, quantity) => {
-      
+
         // const variantId = e.target.name
         // const quantity = quantit
-        console.log('update', variantId,quantity)
-        const response = await axios.post(BASE_URL + `/api/cart/${variantId}/update`, {quantity: quantity}, {
+        console.log('update', variantId, quantity)
+        const response = await axios.post(BASE_URL + `/api/cart/${variantId}/update`, { quantity: quantity }, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`
             }
@@ -101,7 +102,7 @@ export default function Cart() {
                 <Container className="p-5">
                     <h1 className="text-center">My Shopping Cart</h1>
                     <div>
-                    <hr />
+                        <hr />
 
                         {cartItems.map((c) => {
                             return (
@@ -113,14 +114,17 @@ export default function Cart() {
                                         <div className="ps-5">
                                             <h4 className="mb-4">{c.variant?.product?.name} ({c.variant?.color?.name})</h4>
                                             <div style={{ maxWidth: '100px' }} className=" d-flex align-items-center">
-                                                <h6>Quantity: </h6><Form.Control size="sm" onChange={updateFormField} name={c.variant_id} type="text" value={quantity[c.variant_id]} style={{width: '30px'}} />
-                                                <Button onClick={()=>{updateCartItem(c.variant_id, quantity[c.variant_id])}} name={c.variant_id} size='sm' className="ms-2 ms-md-4">Update</Button>
+                                                <h6>Quantity: </h6><Form.Control size="sm" onChange={updateFormField} name={c.variant_id} type="text" value={quantity[c.variant_id]} style={{ width: '30px' }} />
+                                                <Button onClick={() => { updateCartItem(c.variant_id, quantity[c.variant_id]) }} name={c.variant_id} size='sm' className="ms-2 ms-md-4">Update</Button>
                                             </div>
-                                            <Button onClick={()=>{deleteCartItem(c.variant_id)}} variant='outline-secondary' size='sm' className="mt-3">Delete</Button>
+                                            <Button onClick={() => { deleteCartItem(c.variant_id) }} variant='outline-secondary' size='sm' className="mt-3">Delete</Button>
                                             <h6 className="mt-4">Price: S${c.variant.product.cost * c.quantity} (S${c.variant.product.cost} / item)</h6>
                                         </div>
                                     </div>
                                     <hr />
+                                    <a className="btn btn-dark btn-outline-light btn-block"
+                                        href={BASE_URL + "/api/checkout/" + user_id + '/checkout'}
+                                    >Checkout</a>
                                 </React.Fragment>
                             )
                         })}

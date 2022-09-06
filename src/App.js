@@ -14,6 +14,7 @@ import Profile from './pages/Profile';
 import ProductListing from './pages/ProductListing';
 import UserProvider from './context/UserContext';
 import ProductDetail from './pages/ProductDetail';
+import Orders from './pages/Orders';
 
 function AddContent() {
   let location = useLocation();
@@ -43,6 +44,7 @@ function AddContent() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/wallets" element={<ProductListing />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/orders" element={<Orders />} />
 
         </Routes>
       </UserProvider>
