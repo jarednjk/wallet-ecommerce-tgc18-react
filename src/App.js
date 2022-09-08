@@ -21,15 +21,15 @@ function AddContent() {
   return (
     <div className={location.pathname === "/" ? "home-page" : ""}>
       <UserProvider>
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
-            <Navbar.Brand href="/">Home</Navbar.Brand>
+            <Navbar.Brand href="/"><img src={require('../src/img/warlet.png')} style={{ height: '30px' }} /></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" >
               <Nav className="d-flex w-100 justify-content-between">
-                <Nav.Link href="/wallets">Shop</Nav.Link>
-                <Nav.Link className="ms-auto" href="/login"><big><CgProfile /></big></Nav.Link>
-                <Nav.Link href="/cart"><big><BsCart2 /></big></Nav.Link>
+                <Link className="text-decoration-none nav-text" to="/wallets">Shop</Link>
+                <Link to="/login" className="ms-lg-auto text-decoration-none pe-3 nav-text" ><big><CgProfile /></big></Link>
+                <Link className="text-decoration-none nav-text" to="/cart"><big><BsCart2 /></big></Link>
 
               </Nav>
             </Navbar.Collapse>

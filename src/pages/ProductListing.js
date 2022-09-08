@@ -4,7 +4,7 @@ import { FiSearch, FiFilter } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
-const BASE_URL = "https://8000-jarednjk-jarednjkwallet-ufol4k5k2n3.ws-us63.gitpod.io"
+const BASE_URL = "https://8000-jarednjk-jarednjkwallet-ufol4k5k2n3.ws-us64.gitpod.io"
 
 export default function ProductListing() {
     const [materials, setMaterials] = useState([]);
@@ -161,13 +161,15 @@ export default function ProductListing() {
         <React.Fragment>
             <Container>
                 {/* header */}
-                <div className="text-center py-5">
+                <div className="text-center pt-5 pb-3">
                     <h5>Shop</h5>
                     <h2>Men Wallets</h2>
                     <p>Crafted from premium, durable materials, our wallets feel great in your hand, and age beautifully as the years go by.</p>
                 </div>
+                <hr/>
 
-                <Row className="g-4 g-lg-5">
+
+                <Row className="g-4 g-lg-5 pt-4">
                     {/* Search bar */}
                     <Col lg={3}>
                         <div className="input-box d-flex flex-row align-items-center ps-3 rounded mb-3">
@@ -264,7 +266,7 @@ export default function ProductListing() {
                         <Row className="g-5">
                             {products.map(p => <React.Fragment key={p.id}>
                                 <Col xs={12} md={6} lg={6} xl={4}>
-                                    <Card className="h-100 rounded-3 shadow">
+                                    <Card id="card-animation" className="h-100 rounded-3 shadow">
                                         <Link to={"/wallets/" + p.id} className="text-reset text-decoration-none" >
                                             <Card.Img variant="top" src={p?.variants?.[0]?.image_url} />
                                             <div id="card-cta">

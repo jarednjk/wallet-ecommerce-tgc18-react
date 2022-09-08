@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios'
 import { Container, Form, Button } from 'react-bootstrap';
 
-const BASE_URL = "https://8000-jarednjk-jarednjkwallet-ufol4k5k2n3.ws-us63.gitpod.io"
+const BASE_URL = "https://8000-jarednjk-jarednjkwallet-ufol4k5k2n3.ws-us64.gitpod.io"
 
 export default function Register() {
 
@@ -115,7 +115,7 @@ export default function Register() {
                         {invalidConfirmPassword === true ? <Form.Text style={{ color: 'red' }}>Please make sure your passwords match</Form.Text> : null}
 
                         <div className="d-grid mt-3">
-                            <Button onClick={register}>SIGN UP</Button>
+                            <Button variant="dark" onClick={register}>SIGN UP</Button>
                         </div>
                         <p className="text-center pt-5">Already have an account? <Link to="/login">Login now</Link></p>
                     </Form>

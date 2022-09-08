@@ -1,4 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+#card-animation {
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+  transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+  cursor: pointer;
+}
+
+.nav-text {
+  color: white !important;
+}
+
+#card-animation:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
+body {
+  background-color: rgba(206, 137, 19, 0.333) !important;
+}
+
+.nav-link {
+  font-family: 'Lato', sans-serif;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+}
 
 .bg-height {
   height: 100%;
@@ -9,7 +39,9 @@
   width: 100vw;
   background-image: url("/public/wallet.jpg");
   background-size: cover;
-  filter: brightness(60%);
+  width: 100%;
+  background-position: center;
+  filter: brightness(40%);
 }
 
 .home-page {
@@ -18,16 +50,35 @@
   flex-direction: column;
 }
 
+#homePageBox{
+  text-shadow: 0 0  black;
+  background: rgba( 255, 255, 255, 0.2 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 1px );
+  -webkit-backdrop-filter: blur( 1px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  height:205px;
+  width:68%;
+  max-width:470px;
+  position: absolute; 
+  }
+
 #cta {
+  text-shadow: 0 0  black;
+  background: rgba( 255, 255, 255, 0.6 );
+  border-radius: 10px;
+  width:68%;
+  max-width:460px;
   left: 50%;
-  margin: auto;
   position: absolute;
+  padding: 30px 0px;
+  
   text-align: center;
   top: 45%;
   transform: translate(-50%, -20%);
   width: 100%;
-  z-index: 2;
-  color: white;
+  color: black;
 }
 
 .form-input {
@@ -67,13 +118,9 @@
   display: inline-block;
 }
 
-.qty-box {
-  border: 1px solid black;
-}
 
 .item-body {
   color: black;
-  font-family: 'Poppins', sans-serif;
   font-size: 14px;
   letter-spacing: 1px;
   font-weight: 400;

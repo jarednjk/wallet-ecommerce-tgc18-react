@@ -1,28 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { Form, Accordion, Container, Row, Col, Card, Button, Carousel, Toast } from "react-bootstrap";
+import { Container, Row, Col, Button, Carousel } from "react-bootstrap";
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
-const BASE_URL = "https://8000-jarednjk-jarednjkwallet-ufol4k5k2n3.ws-us63.gitpod.io"
+const BASE_URL = "https://8000-jarednjk-jarednjkwallet-ufol4k5k2n3.ws-us64.gitpod.io"
 
 export default function ProductDetail() {
-
-    // const [currentWallet, setCurrentWallet] = useState("");
-    // const [currentPrice, setCurrentPrice] = useState(0);
-    // const [currentLength, setCurrentLength] = useState("");
-    // const [currentWidth, setCurrentWidth] = useState("");
-    // const [currentDepth, setCurrentDepth] = useState("");
-    // const [currentDescription, setCurrentDescription] = useState("");
-    // const [currentCardSlot, setCurrentCardSlot] = useState(0);
-    // const [currentMaterial, setCurrentMaterial] = useState("");
-    // const [currentFeature, setCurrentFeature] = useState([]);
-    // const [currentColor, setCurrentColor] = useState([]);
-    // const [currentImage, setCurrentImage] = useState("");
-
-    // const [show, setShow] = useState(false);
-    // const navigate = useNavigate();
 
     const [currentWallet, setCurrentWallet] = useState('');
     const [selectedVariant, setSelectedVariant] = useState('');

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Container, Form, Button } from 'react-bootstrap';
 import { UserContext } from '../context/UserContext';
 
-const BASE_URL = "https://8000-jarednjk-jarednjkwallet-ufol4k5k2n3.ws-us63.gitpod.io"
+const BASE_URL = "https://8000-jarednjk-jarednjkwallet-ufol4k5k2n3.ws-us64.gitpod.io"
 
 export default function Login() {
 
@@ -65,7 +65,7 @@ export default function Login() {
                         {value.loginFail === true ? <Form.Text style={{ color: 'red' }}>Invalid email or password. Please try again.</Form.Text> : null}
 
                         <div className="d-grid mt-3">
-                            <Button onClick={ async () => { await value.login(email, password)}}>SIGN IN</Button>
+                            <Button variant="dark" onClick={ async () => { await value.login(email, password)}}>SIGN IN</Button>
                         </div>
                         <p className="text-center pt-5">Don't have an account? <Link to="/register">Register now</Link></p>
                     </Form>

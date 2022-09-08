@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Container, Table, Row, Col, Form, Button } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { Container, Table } from 'react-bootstrap';
 import axios from "axios";
-import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const BASE_URL = "https://8000-jarednjk-jarednjkwallet-ufol4k5k2n3.ws-us63.gitpod.io"
+const BASE_URL = "https://8000-jarednjk-jarednjkwallet-ufol4k5k2n3.ws-us64.gitpod.io"
 
 export default function Orders() {
     const [loggedIn, setLoggedIn] = useState(true);
@@ -34,29 +32,39 @@ export default function Orders() {
     return (
         <React.Fragment>
             <Container className="py-5 px-sm-0 px-lg-5">
-                <h2 className="text-center">My Orders</h2> 
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>#Order ID</th>
-                            <th>Order Date</th>
-                            <th>Shipping Address</th>
-                            <th>Order Status</th>
-                            <th>Details</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {orderItems.map(o => (
+                <h2 className="text-center">My Orders</h2>
+                {loggedIn ?
+                    <Table striped bordered hover>
+                        <thead>
                             <tr>
-                                <td>{o.id}</td>
-                                <td>{o.order_date.slice(0,10)}</td>
-                                <td>{o.shipping_address_line1}<br/>{o.shipping_address_line2}<br/>{o.shipping_address_postal}</td>
-                                <td>{o.status.name}</td>
-                                <td><a className='btn-dark btn-sm btn' href={o.receipt_url} target="_blank">View Receipt</a></td>
+                                <th>#Order ID</th>
+                                <th>Order Date</th>
+                                <th>Shipping Address</th>
+                                <th>Order Status</th>
+                                <th>Details</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </Table>
+                        </thead>
+                        {orderItems.length ?
+                            <tbody>
+                                {orderItems.map(o => (
+                                    <tr>
+                                        <td>{o.id}</td>
+                                        <td>{o.order_date.slice(0, 10)}</td>
+                                        <td>{o.shipping_address_line1}<br />{o.shipping_address_line2}<br />{o.shipping_address_postal}</td>
+                                        <td>{o.status.name}</td>
+                                        <td><a className='btn-dark btn-sm btn' href={o.receipt_url} target="_blank">View Receipt</a></td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                            :
+                            <p className="py-4 lead text-center">You have no order items</p>
+                        }
+                    </Table>
+                    :
+                    <p className="py-4 lead text-center">Please log in to view your Order History</p>
+                }
+
+
             </Container>
         </React.Fragment>
     )
