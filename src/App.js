@@ -15,8 +15,21 @@ import ProductListing from './pages/ProductListing';
 import UserProvider from './context/UserContext';
 import ProductDetail from './pages/ProductDetail';
 import Orders from './pages/Orders';
+import React, { useEffect, useState } from 'react';
+
 
 function AddContent() {
+
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  // load in the current active user
+  useEffect(() => {
+      if (localStorage.getItem('id') !== null) {
+          console.log("localstorage", localStorage.getItem('accessToken'));
+          setLoggedIn(true)
+      }
+  }, [])
+
   let location = useLocation();
   return (
     <div className={location.pathname === "/" ? "home-page" : ""}>
@@ -28,7 +41,7 @@ function AddContent() {
             <Navbar.Collapse id="basic-navbar-nav" >
               <Nav className="d-flex w-100 justify-content-between">
                 <Link className="text-decoration-none nav-text" to="/wallets">Shop</Link>
-                <Link to="/login" className="ms-lg-auto text-decoration-none pe-3 nav-text" ><big><CgProfile /></big></Link>
+                <Link to={loggedIn ? "/profile" : "/login" } className="ms-lg-auto text-decoration-none pe-3 nav-text" ><big><CgProfile /></big></Link>
                 <Link className="text-decoration-none nav-text" to="/cart"><big><BsCart2 /></big></Link>
 
               </Nav>

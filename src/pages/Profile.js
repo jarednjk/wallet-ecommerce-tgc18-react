@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { Container, Button } from 'react-bootstrap';
 
-const BASE_URL = "https://8000-jarednjk-jarednjkwallet-ufol4k5k2n3.ws-us64.gitpod.io"
+const BASE_URL = "https://warlet.herokuapp.com"
 export default function Profile() {
 
     const [firstName, setFirstName] = useState("")
@@ -41,14 +42,21 @@ export default function Profile() {
         if (response.data) {
             localStorage.clear()
         }
+        setLoggedIn(false)
     }
 
     return (
         <React.Fragment>
-            {loggedIn === true ? 
-            <div>
+            {loggedIn === true ?
+            <Container className="pt-5 mt-5">
+                <div className='text-center pt-5 mt-5'>
                 <h2>Welcome {firstName} {lastName}</h2>
+                <h2>Email: {email}</h2>
+                <Button className="mt-3 me-2" variant="dark"><Link className="text-decoration-none text-reset" to="/orders">View Past Orders</Link></Button>
+                <Button variant="outline-dark" className="mt-3" onClick={logout}><Link className="text-decoration-none text-reset" to="/login">Log Out</Link></Button>
             </div>
+            </Container>
+            
             :
             null
         }

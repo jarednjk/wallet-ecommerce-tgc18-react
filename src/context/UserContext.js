@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
 
 
-const BASE_URL = "https://8000-jarednjk-jarednjkwallet-ufol4k5k2n3.ws-us64.gitpod.io"
+const BASE_URL = "https://warlet.herokuapp.com"
 
 export const UserContext = React.createContext({
     

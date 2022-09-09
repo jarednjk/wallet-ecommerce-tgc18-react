@@ -4,7 +4,7 @@ import axios from "axios";
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const BASE_URL = "https://8000-jarednjk-jarednjkwallet-ufol4k5k2n3.ws-us64.gitpod.io"
+const BASE_URL = "https://warlet.herokuapp.com"
 
 export default function Orders() {
     const [loggedIn, setLoggedIn] = useState(true);
@@ -34,7 +34,7 @@ export default function Orders() {
             <Container className="py-5 px-sm-0 px-lg-5">
                 <h2 className="text-center">My Orders</h2>
                 {loggedIn ?
-                    <Table striped bordered hover>
+                    <Table variant='dark' striped bordered hover>
                         <thead>
                             <tr>
                                 <th>#Order ID</th>
@@ -52,7 +52,7 @@ export default function Orders() {
                                         <td>{o.order_date.slice(0, 10)}</td>
                                         <td>{o.shipping_address_line1}<br />{o.shipping_address_line2}<br />{o.shipping_address_postal}</td>
                                         <td>{o.status.name}</td>
-                                        <td><a className='btn-dark btn-sm btn' href={o.receipt_url} target="_blank">View Receipt</a></td>
+                                        <td><a className='btn-light btn-sm btn' href={o.receipt_url} target="_blank">View Receipt</a></td>
                                     </tr>
                                 ))}
                             </tbody>

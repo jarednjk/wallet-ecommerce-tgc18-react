@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Container, Form, Button } from 'react-bootstrap';
 import { UserContext } from '../context/UserContext';
 
-const BASE_URL = "https://8000-jarednjk-jarednjkwallet-ufol4k5k2n3.ws-us64.gitpod.io"
+const BASE_URL = "https://warlet.herokuapp.com"
 
 export default function Login() {
 
